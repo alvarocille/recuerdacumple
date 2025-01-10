@@ -1,0 +1,27 @@
+name: recuerdacumple
+description: "A new Flutter project."
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.5.4
+dependencies:
+  flutter:
+    sdk: flutter
+  sqflite: ^2.0.0+3
+  sqflite_common_ffi: ^2.0.0
+  path: ^1.8.3
+  calendar_view: ^1.4.0
+
+  cupertino_icons: ^1.0.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^5.0.0
+
+flutter:
+  assets:
+    - assets/background.jpg
+  uses-material-design: true
