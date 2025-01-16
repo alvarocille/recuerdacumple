@@ -5,13 +5,12 @@ class CalendarScreen extends StatefulWidget {
   const CalendarScreen({super.key});
 
   @override
-  _CalendarScreenState createState() => _CalendarScreenState();
+  CalendarScreenState createState() => CalendarScreenState();
 }
 
-class _CalendarScreenState extends State<CalendarScreen> {
-  int _selectedIndex = 0; // Variable para almacenar el índice seleccionado
+class CalendarScreenState extends State<CalendarScreen> {
+  int _selectedIndex = 0;
 
-  // Método para manejar la navegación al seleccionar un ítem del BottomNavigationBar
   void _onSectionChoose(int index) {
     setState(() {
       _selectedIndex = index;
@@ -93,8 +92,8 @@ class _CalendarScreenState extends State<CalendarScreen> {
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _selectedIndex, // Establece el índice seleccionado
-        onTap: _onSectionChoose, // Maneja el cambio de pantalla al pulsar los ítems
+        currentIndex: _selectedIndex,
+        onTap: _onSectionChoose,
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.calendar_today),

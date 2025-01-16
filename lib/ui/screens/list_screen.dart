@@ -5,10 +5,10 @@ class ListScreen extends StatefulWidget {
   const ListScreen({super.key});
 
   @override
-  _ListScreenState createState() => _ListScreenState();
+  ListScreenState createState() => ListScreenState();
 }
 
-class _ListScreenState extends State<ListScreen> {
+class ListScreenState extends State<ListScreen> {
   List<Birthday> birthdays = [
     Birthday("Juan Pérez", DateTime(2025, 5, 12)),
     Birthday("Ana García", DateTime(2025, 6, 3)),

@@ -2,8 +2,9 @@ import 'package:calendar_view/calendar_view.dart';
 import 'package:flutter/foundation.dart' show kIsWeb, defaultTargetPlatform, TargetPlatform;
 import 'package:flutter/material.dart';
 import 'package:recuerdacumple/ui/screens/add_screen.dart';
+import 'package:recuerdacumple/ui/screens/auth/register_screen.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
-import 'ui/screens/login_screen.dart';
+import 'ui/screens/auth/login_screen.dart';
 import 'ui/screens/calendar_screen.dart';
 import 'ui/screens/list_screen.dart';
 
@@ -40,6 +41,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => LoginScreen(),
+        '/register': (context) => RegisterScreen(),
         '/calendar': (context) => const CalendarScreen(),
         '/list': (context) => const ListScreen(),
         '/add': (context) => const AddBirthdayScreen()
