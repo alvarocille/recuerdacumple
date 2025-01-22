@@ -1,22 +1,23 @@
-class User {
-  final int? id;
+import 'package:recuerdacumple/models/person.dart';
+
+class User extends Person {
   final String email;
   final String password;
-  final String birthday;
 
   User({
-    this.id,
+    super.id,
     required this.email,
     required this.password,
-    required DateTime birthday,
-  }) : birthday = birthday.toIso8601String();
+    required super.name,
+    required super.birthday,
+  });
 
+  @override
   Map<String, dynamic> toMap() {
-    return {
-      'id': id,
-      'email': email,
-      'password': password,
-      'birthday': birthday,
-    };
+    return super.toMap()
+      ..addAll({
+        'email': email,
+        'password': password,
+      });
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../widgets/bottom_nav_bar.dart';
 import '/models/birthday.dart';
 
 class ListScreen extends StatefulWidget {
@@ -9,6 +10,7 @@ class ListScreen extends StatefulWidget {
 }
 
 class ListScreenState extends State<ListScreen> {
+
   List<Birthday> birthdays = [
     Birthday("Juan Pérez", DateTime(2025, 5, 12)),
     Birthday("Ana García", DateTime(2025, 6, 3)),
@@ -112,22 +114,7 @@ class ListScreenState extends State<ListScreen> {
           ),
         ],
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.calendar_today),
-            label: 'Calendario',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.list),
-            label: 'Lista',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.language),
-            label: 'Amigos',
-          ),
-        ],
-      ),
+      bottomNavigationBar: BottomNavBar(currentIndex: 1),
     );
   }
 }

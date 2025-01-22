@@ -1,14 +1,20 @@
+import 'dart:convert';
+
+import 'package:crypto/crypto.dart';
 import 'package:flutter/material.dart';
 import '/models/user.dart';
 import '/dao/user_crud.dart';
 
 class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({super.key});
+
   @override
-  _RegisterScreenState createState() => _RegisterScreenState();
+  RegisterScreenState createState() => RegisterScreenState();
 }
 
-class _RegisterScreenState extends State<RegisterScreen> {
+class RegisterScreenState extends State<RegisterScreen> {
   final _formKey = GlobalKey<FormState>();
+  final _nameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _birthdayController = TextEditingController();
@@ -20,11 +26,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
   Future<void> _register() async {
     if (_formKey.currentState!.validate()) {
       final email = _emailController.text;
-      final password = _passwordController.text;
+      final name = _nameController.text;
+      var password = _passwordController.text;
+
+      var bytes1 = utf8.encode(password);
+      password = sha256.convert(bytes1).toString();
 
       if (_selectedDate != null) {
         try {
           await _userCRUD.insertUser(User(
+            name: name,
             email: email,
             password: password,
             birthday: _selectedDate!,
@@ -66,9 +77,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Registro'),
-      ),
       body: Stack(
         children: [
           // Fondo de pantalla
@@ -95,6 +103,21 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
+                      // Campo de nombre
+                      TextFormField(
+                        controller: _nameController,
+                        decoration: InputDecoration(
+                          labelText: 'Nombre',
+                          border: const OutlineInputBorder(),
+                          suffixIcon: IconButton(
+                            icon: const Icon(Icons.clear),
+                            onPressed: () {
+                              _emailController.clear();
+                            },
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 16.0),
                       // Campo de correo electrónico
                       TextFormField(
                         controller: _emailController,
