@@ -19,7 +19,7 @@ class RegisterScreenState extends State<RegisterScreen> {
   final _passwordController = TextEditingController();
   final _birthdayController = TextEditingController();
   bool _obscurePassword = true;
-  DateTime? _selectedDate;
+  DateTime? _selectedDate = DateTime.now();
 
   final UserCRUD _userCRUD = UserCRUD();
 
@@ -62,7 +62,7 @@ class RegisterScreenState extends State<RegisterScreen> {
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
       context: context,
-      initialDate: DateTime.now(),
+      initialDate: _selectedDate,
       firstDate: DateTime(1900),
       lastDate: DateTime(2100),
     );
@@ -186,28 +186,24 @@ class RegisterScreenState extends State<RegisterScreen> {
                       ),
                       const SizedBox(height: 16.0),
                       // Campo de cumpleaños con selector de fecha
-                      GestureDetector(
+                      TextFormField(
                         onTap: () => _selectDate(context),
-                        child: AbsorbPointer(
-                          child: TextFormField(
-                            controller: _birthdayController,
-                            decoration: InputDecoration(
-                              labelText: 'Cumpleaños (YYYY-MM-DD)',
-                              border: const OutlineInputBorder(),
-                              suffixIcon: IconButton(
-                                icon: const Icon(Icons.calendar_today),
-                                onPressed: () => _selectDate(context),
-                              ),
-                            ),
-                            validator: (value) {
-                              if (_selectedDate == null) {
-                                return 'Por favor, selecciona tu fecha de cumpleaños';
-                              }
+                        controller: _birthdayController,
+                        decoration: InputDecoration(
+                          labelText: 'Cumpleaños',
+                          border: const OutlineInputBorder(),
+                          suffixIcon: IconButton(
+                             icon: const Icon(Icons.calendar_today),
+                             onPressed: () => _selectDate(context),
+                          ),
+                        ),
+                        validator: (value) {
+                           if (_selectedDate == null) {
+                              return 'Por favor, selecciona tu fecha de cumpleaños';
+                           }
                               return null;
                             },
                           ),
-                        ),
-                      ),
                       const SizedBox(height: 24.0),
                       // Botón de registro
                       ElevatedButton(
