@@ -11,16 +11,13 @@ class BottomNavBar extends StatelessWidget {
   void _onSectionChoose(BuildContext context, int index) {
     switch (index) {
       case 0:
-      // Navegar a la pantalla del calendario
         Navigator.pushReplacementNamed(context, '/calendar');
         break;
       case 1:
-      // Navegar a la pantalla de lista
         Navigator.pushReplacementNamed(context, '/list');
         break;
       case 2:
-      // Navegar a la pantalla de amigos
-        Navigator.pushReplacementNamed(context, '/friends');
+        Navigator.pushReplacementNamed(context, '/community');
         break;
       default:
         break;

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:calendar_view/calendar_view.dart';
 
+import '../widgets/app_drawer.dart';
+
 class CalendarScreen extends StatefulWidget {
   const CalendarScreen({super.key});
 
@@ -16,33 +18,6 @@ class CalendarScreenState extends State<CalendarScreen> {
       appBar: AppBar(
         title: const Text('Inicio'),
         centerTitle: true,
-        leading: PopupMenuButton<String>(
-          icon: const Icon(Icons.menu), // Menú de hamburguesa
-          onSelected: (String value) {
-            // Manejar la acción seleccionada
-            if (value == 'Configuración') {
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Abrir Configuración')),
-              );
-            } else if (value == 'Perfil') {
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Abrir Perfil')),
-              );
-            }
-          },
-          itemBuilder: (BuildContext context) {
-            return const [
-              PopupMenuItem<String>(
-                value: 'Configuración',
-                child: Text('Configuración'),
-              ),
-              PopupMenuItem<String>(
-                value: 'Perfil',
-                child: Text('Perfil'),
-              ),
-            ];
-          },
-        ),
         actions: [
           IconButton(
             icon: const Icon(Icons.add),

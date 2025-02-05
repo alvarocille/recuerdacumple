@@ -17,32 +17,6 @@ class CommunityScreenState extends State<CommunityScreen> {
       appBar: AppBar(
         title: const Text('Comunidad'),
         centerTitle: true,
-        leading: PopupMenuButton<String>(
-          icon: const Icon(Icons.menu),
-          onSelected: (String value) {
-            if (value == 'Configuración') {
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Abrir Configuración')),
-              );
-            } else if (value == 'Perfil') {
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Abrir Perfil')),
-              );
-            }
-          },
-          itemBuilder: (BuildContext context) {
-            return const [
-              PopupMenuItem<String>(
-                value: 'Configuración',
-                child: Text('Configuración'),
-              ),
-              PopupMenuItem<String>(
-                value: 'Perfil',
-                child: Text('Perfil'),
-              ),
-            ];
-          },
-        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recuerdacumple/ui/widgets/app_drawer.dart';
 import 'community_screen.dart';
 import 'calendar_screen.dart';
 import 'list_screen.dart';
@@ -27,6 +28,7 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: AppDrawer(),
       body: _screens[_currentIndex], // Muestra la pantalla actual
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
@@ -41,8 +43,8 @@ class _MainScreenState extends State<MainScreen> {
             label: 'Lista',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.pets),
-            label: 'Amigos',
+            icon: Icon(Icons.online_prediction),
+            label: 'Comunidad',
           ),
         ],
       ),

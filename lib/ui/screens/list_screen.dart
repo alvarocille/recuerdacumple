@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recuerdacumple/ui/widgets/app_drawer.dart';
 import '/models/birthday.dart';
 
 class ListScreen extends StatefulWidget {
@@ -43,33 +44,6 @@ class ListScreenState extends State<ListScreen> {
       appBar: AppBar(
         title: const Text('Cumpleaños'),
         centerTitle: true,
-        leading: PopupMenuButton<String>(
-          icon: const Icon(Icons.menu),
-          onSelected: (String value) {
-            // Manejar la acción seleccionada
-            if (value == 'Configuración') {
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Abrir Configuración')),
-              );
-            } else if (value == 'Perfil') {
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Abrir Perfil')),
-              );
-            }
-          },
-          itemBuilder: (BuildContext context) {
-            return const [
-              PopupMenuItem<String>(
-                value: 'Configuración',
-                child: Text('Configuración'),
-              ),
-              PopupMenuItem<String>(
-                value: 'Perfil',
-                child: Text('Perfil'),
-              ),
-            ];
-          },
-        ),
         actions: [
           IconButton(
             icon: const Icon(Icons.add),
