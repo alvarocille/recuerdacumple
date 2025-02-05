@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:calendar_view/calendar_view.dart';
 
-import '../widgets/bottom_nav_bar.dart';
-
 class CalendarScreen extends StatefulWidget {
   const CalendarScreen({super.key});
 
@@ -69,7 +67,6 @@ class CalendarScreenState extends State<CalendarScreen> {
           ),
         ],
       ),
-      bottomNavigationBar: BottomNavBar(currentIndex: 0),
     );
   }
 }

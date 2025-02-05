@@ -26,7 +26,7 @@ class LoginScreenState extends State<LoginScreen> {
       if (user != null) {
         _emailController.clear();
         _passwordController.clear();
-        Navigator.pushReplacementNamed(context, '/calendar');
+        Navigator.pushReplacementNamed(context, '/home');
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Correo o contraseña incorrectos')),

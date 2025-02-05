@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../widgets/bottom_nav_bar.dart';
 import '/models/birthday.dart';
 
 class ListScreen extends StatefulWidget {
@@ -114,7 +113,6 @@ class ListScreenState extends State<ListScreen> {
           ),
         ],
       ),
-      bottomNavigationBar: BottomNavBar(currentIndex: 1),
     );
   }
 }

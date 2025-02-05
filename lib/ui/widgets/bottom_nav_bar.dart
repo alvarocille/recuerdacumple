@@ -12,15 +12,15 @@ class BottomNavBar extends StatelessWidget {
     switch (index) {
       case 0:
       // Navegar a la pantalla del calendario
-        Navigator.pushNamed(context, '/calendar');
+        Navigator.pushReplacementNamed(context, '/calendar');
         break;
       case 1:
       // Navegar a la pantalla de lista
-        Navigator.pushNamed(context, '/list');
+        Navigator.pushReplacementNamed(context, '/list');
         break;
       case 2:
       // Navegar a la pantalla de amigos
-        Navigator.pushNamed(context, '/friends');
+        Navigator.pushReplacementNamed(context, '/friends');
         break;
       default:
         break;

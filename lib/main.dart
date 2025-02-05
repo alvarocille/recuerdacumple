@@ -5,17 +5,15 @@ import 'package:recuerdacumple/ui/screens/add_screen.dart';
 import 'package:recuerdacumple/ui/screens/auth/register_screen.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'ui/screens/auth/login_screen.dart';
-import 'ui/screens/calendar_screen.dart';
-import 'ui/screens/list_screen.dart';
+import 'ui/screens/main_screen.dart'; // Nueva pantalla principal
 
 void main() {
-  // Configuración específica para entornos de escritorio (Windows, Linux, macOS)
   if (!kIsWeb &&
       (defaultTargetPlatform == TargetPlatform.windows ||
           defaultTargetPlatform == TargetPlatform.linux ||
           defaultTargetPlatform == TargetPlatform.macOS)) {
-    sqfliteFfiInit(); // Inicializa FFI para Sqflite
-    databaseFactory = databaseFactoryFfi; // Configura el factory de la base de datos
+    sqfliteFfiInit();
+    databaseFactory = databaseFactoryFfi;
   }
 
   WidgetsFlutterBinding.ensureInitialized();
@@ -38,13 +36,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.purple,
       ),
-      initialRoute: '/',
+      initialRoute: '/', // Empieza en la pantalla de login
       routes: {
-        '/': (context) => LoginScreen(),
-        '/register': (context) => RegisterScreen(),
-        '/calendar': (context) => const CalendarScreen(),
-        '/list': (context) => const ListScreen(),
-        '/add': (context) => const AddBirthdayScreen()
+        '/': (context) => const LoginScreen(),
+        '/register': (context) => const RegisterScreen(),
+        '/home': (context) => const MainScreen(), // Nueva pantalla principal
+        '/add': (context) => const AddBirthdayScreen(),
       },
     );
   }
