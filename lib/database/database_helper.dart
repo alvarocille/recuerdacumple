@@ -16,7 +16,7 @@ class DatabaseHelper {
 
   Future<Database> _initDatabase() async {
     final dbPath = await getDatabasesPath(); 
-    final path = join(dbPath, 'app_database.db'); 
+    final path = join(dbPath, 'recuerdacumple.db');
 
     return await openDatabase(
       path,
@@ -26,8 +26,8 @@ class DatabaseHelper {
   }
 
   Future<void> _onCreate(Database db, int version) async {
-    await db.execute('''
-      CREATE TABLE  IF NOT EXISTS users (
+    await db.execute(''' 
+      CREATE TABLE IF NOT EXISTS users (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         name TEXT NOT NULL,
         email TEXT NOT NULL UNIQUE,
@@ -35,5 +35,27 @@ class DatabaseHelper {
         birthday TEXT NOT NULL
       )
     ''');
+
+    await db.execute('''
+      CREATE TABLE IF NOT EXISTS friends (
+        user_id INTEGER NOT NULL,
+        friend_id INTEGER NOT NULL,
+        FOREIGN KEY(user_id) REFERENCES users(id),
+        FOREIGN KEY(friend_id) REFERENCES users(id),
+        PRIMARY KEY(user_id, friend_id)
+      )
+    ''');
+
+    await db.execute('''
+      CREATE TABLE IF NOT EXISTS events (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT NOT NULL,
+        date TEXT NOT NULL,
+        user_id INTEGER,
+        FOREIGN KEY(user_id) REFERENCES users(id)
+      )
+    ''');
   }
+
+
 }

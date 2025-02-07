@@ -18,8 +18,8 @@ dependencies:
   shared_preferences: ^2.4.0
   flutter_localization:
   flutter_lints:
-
   cupertino_icons: ^1.0.8
+  share_plus: ^10.1.4
 
 dev_dependencies:
   flutter_test:

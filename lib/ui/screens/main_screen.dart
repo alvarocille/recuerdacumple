@@ -1,52 +1,53 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:recuerdacumple/ui/widgets/app_drawer.dart';
-import 'community_screen.dart';
-import 'calendar_screen.dart';
-import 'list_screen.dart';
+import 'package:recuerdacumple/ui/widgets/bottom_nav_bar.dart';
+import 'package:recuerdacumple/ui/viewmodel/main_screen_viewmodel.dart';
 
-class MainScreen extends StatefulWidget {
+class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
 
   @override
-  _MainScreenState createState() => _MainScreenState();
-}
-
-class _MainScreenState extends State<MainScreen> {
-  int _currentIndex = 0;
-  final List<Widget> _screens = [
-    const CalendarScreen(),
-    const ListScreen(),
-    const CommunityScreen(),
-  ];
-
-  void _onSectionChoose(int index) {
-    setState(() {
-      _currentIndex = index;
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      drawer: AppDrawer(),
-      body: _screens[_currentIndex], // Muestra la pantalla actual
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        onTap: _onSectionChoose, // Cambia de pantalla sin animación molesta
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.calendar_today),
-            label: 'Calendario',
+    return ChangeNotifierProvider(
+      create: (_) => MainScreenViewModel(), // Proveer el ViewModel
+      child: Scaffold(
+        drawer: const AppDrawer(),
+        appBar: AppBar(
+          title: Consumer<MainScreenViewModel>(
+            builder: (context, viewModel, child) {
+              return Text(viewModel.currentTitle);
+            },
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.list),
-            label: 'Lista',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.online_prediction),
-            label: 'Comunidad',
-          ),
-        ],
+          centerTitle: true,
+          actions: [
+            Consumer<MainScreenViewModel>(
+              builder: (context, viewModel, child) {
+                return viewModel.currentIndex != 2
+                    ? IconButton(
+                  icon: const Icon(Icons.add),
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/add');
+                  },
+                )
+                    : const SizedBox(); // No muestra el botón de añadir si estamos en la pantalla de Comunidad
+              },
+            ),
+          ],
+        ),
+        body: Consumer<MainScreenViewModel>(
+          builder: (context, viewModel, child) {
+            return viewModel.screens[viewModel.currentIndex];
+          },
+        ),
+        bottomNavigationBar: Consumer<MainScreenViewModel>(
+          builder: (context, viewModel, child) {
+            return BottomNavBar(
+              currentIndex: viewModel.currentIndex,
+              onSectionChoose: viewModel.onSectionChoose,
+            );
+          },
+        ),
       ),
     );
   }

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../viewmodel/font_size_viewmodel.dart';
-import '../../viewmodel/language_viewmodel.dart';
-import '../../viewmodel/theme_viewmodel.dart';
-import '../../widgets/app_drawer.dart';
+import '../../viewmodel/configuration/font_size_viewmodel.dart';
+import '../../viewmodel/configuration/language_viewmodel.dart';
+import '../../viewmodel/configuration/theme_viewmodel.dart';
 import '../../widgets/settings_card.dart';
 
 /// Pantalla de configuración de la aplicación.

@@ -11,8 +11,8 @@ class LanguageViewModel extends ChangeNotifier {
   }
 
   static const Map<String, String> _languages = {
-    "en": "English",
-    "es": "Spanish"
+    "es": "Español",
+    "en": "English"
   };
   Map<String, String> get languages => _languages;
 
