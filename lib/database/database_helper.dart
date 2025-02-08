@@ -32,7 +32,8 @@ class DatabaseHelper {
         name TEXT NOT NULL,
         email TEXT NOT NULL UNIQUE,
         password TEXT NOT NULL,
-        birthday TEXT NOT NULL
+        birthday TEXT NOT NULL,
+        code TEXT NOT NULL
       )
     ''');
 

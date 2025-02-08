@@ -30,7 +30,7 @@ class MainScreen extends StatelessWidget {
                     Navigator.pushNamed(context, '/add');
                   },
                 )
-                    : const SizedBox(); // No muestra el botón de añadir si estamos en la pantalla de Comunidad
+                    : const SizedBox();
               },
             ),
           ],

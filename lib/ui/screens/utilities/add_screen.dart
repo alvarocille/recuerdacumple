@@ -59,7 +59,7 @@ class AddBirthdayScreen extends StatelessWidget {
                   const SizedBox(height: 16),
                   ElevatedButton(
                     onPressed: () async {
-                      await viewModel.addBirthday(user?.id);
+                      await viewModel.addBirthday(user?.id, context);
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(content: Text('Cumpleaños Agregado')),
                       );
@@ -76,3 +76,4 @@ class AddBirthdayScreen extends StatelessWidget {
     );
   }
 }
+

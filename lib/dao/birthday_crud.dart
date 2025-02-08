@@ -26,7 +26,6 @@ class BirthdayCRUD {
     return null;
   }
 
-  // Obtener todos los eventos (cumpleaños) asociados a un usuario
   Future<List<Birthday>> getUserEvents(int userId) async {
     final db = await _databaseHelper.database;
     final List<Map<String, dynamic>> maps = await db.query(
@@ -37,16 +36,25 @@ class BirthdayCRUD {
 
     return List.generate(maps.length, (i) {
       final event = maps[i];
+
+      final String eventDateString = event['date'].toString();
+
+      DateTime eventDate;
+      try {
+        eventDate = DateTime.parse(eventDateString);
+      } catch (e) {
+        eventDate = DateTime(2000, 1, 1);
+      }
+
       return Birthday(
         id: event['id'],
         name: event['name'],
-        date: event['date'],
+        date: eventDate,
         userId: event['user_id'],
       );
     });
   }
 
-  // Obtener todos los eventos sin usuario específico (generales)
   Future<List<Birthday>> getAllEvents() async {
     final db = await _databaseHelper.database;
     final List<Map<String, dynamic>> maps = await db.query('events');
@@ -56,7 +64,7 @@ class BirthdayCRUD {
       return Birthday(
         id: event['id'],
         name: event['name'],
-        date: event['date'],
+        date: DateTime.parse(event['date']),
         userId: event['user_id'],
       );
     });
@@ -72,16 +80,14 @@ class BirthdayCRUD {
     );
   }
 
-  // Obtener los cumpleaños de los amigos de un usuario específico
   Future<List<Birthday>> getFriendsBirthdays(int userId) async {
     final db = await _databaseHelper.database;
 
-    // Consulta para obtener los amigos del usuario y sus cumpleaños
     final List<Map<String, dynamic>> maps = await db.rawQuery('''
-      SELECT u.id, u.name, u.birthday, u.id AS user_id
-      FROM users u
-      JOIN friends f ON f.friend_id = u.id
-      WHERE f.user_id = ?
+    SELECT u.id, u.name, u.birthday, u.id AS user_id
+    FROM users u
+    JOIN friends f ON f.friend_id = u.id
+    WHERE f.user_id = ?
     ''', [userId]);
 
     return List.generate(maps.length, (i) {
@@ -89,9 +95,18 @@ class BirthdayCRUD {
       return Birthday(
         id: friend['id'],
         name: friend['name'],
-        date: friend['birthday'],
+        date: DateTime.parse(friend['birthday']),
         userId: friend['user_id'],
       );
     });
+  }
+
+  Future<void> deleteBirthday(int? id) async {
+    final db = await _databaseHelper.database;
+    await db.delete(
+      'events',
+      where: 'id = ?',
+      whereArgs: [id],
+    );
   }
 }

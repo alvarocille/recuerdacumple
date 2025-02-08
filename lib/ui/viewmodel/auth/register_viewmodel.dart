@@ -19,6 +19,8 @@ class RegisterViewModel extends ChangeNotifier {
       final email = emailController.text;
       final name = nameController.text;
       var password = passwordController.text;
+      var code = _userCRUD.generateUniqueCode();
+      print(code);
 
       var bytes1 = utf8.encode(password);
       password = sha256.convert(bytes1).toString();
@@ -30,6 +32,7 @@ class RegisterViewModel extends ChangeNotifier {
             email: email,
             password: password,
             birthday: selectedDate!,
+            code: code
           ));
           nameController.clear();
           emailController.clear();
@@ -39,8 +42,9 @@ class RegisterViewModel extends ChangeNotifier {
             const SnackBar(content: Text('Usuario registrado correctamente')),
           );
         } catch (e) {
+          print('Error al registrar usuario: $e');
           ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('El correo ya está registrado')),
+            const SnackBar(content: Text('No se ha podido registrar correctamente.')),
           );
         }
       } else {

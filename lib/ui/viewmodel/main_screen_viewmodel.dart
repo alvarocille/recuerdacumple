@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
 import '../screens/main/calendar_screen.dart';
 import '../screens/main/community_screen.dart';
@@ -6,6 +6,7 @@ import '../screens/main/list_screen.dart';
 
 class MainScreenViewModel extends ChangeNotifier {
   int _currentIndex = 0;
+  DateTime? _selectedDate;
 
   int get currentIndex => _currentIndex;
 
@@ -24,12 +25,16 @@ class MainScreenViewModel extends ChangeNotifier {
   List<Widget> get screens => _screens;
   List<String> get title => _title;
 
-  // Cambiar la sección seleccionada
-  void onSectionChoose(int index) {
+  DateTime? get selectedDate => _selectedDate;
+
+  void onSectionChoose(int index, {DateTime? date}) {
     _currentIndex = index;
-    notifyListeners(); // Notificar a la vista
+    _selectedDate = null;
+    if (date != null) {
+      _selectedDate = date;
+    }
+    notifyListeners();
   }
 
-  // Obtener el título actual basado en el índice
   String get currentTitle => _title[_currentIndex];
 }

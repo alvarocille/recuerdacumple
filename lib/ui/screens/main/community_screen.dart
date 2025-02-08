@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
+import '../../../provider/user_provider.dart';
 import '../../viewmodel/main/community_viewmodel.dart';
 
 class CommunityScreen extends StatelessWidget {
@@ -8,17 +8,24 @@ class CommunityScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final userCode = context.watch<UserProvider>().user?.code;
+
     return ChangeNotifierProvider(
       create: (_) => CommunityViewModel(),
-      child: Scaffold(
-        body: SingleChildScrollView(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Consumer<CommunityViewModel>(
-                builder: (context, communityViewModel, child) {
-                  return TextFormField(
+      child: Consumer<CommunityViewModel>(
+        builder: (context, communityViewModel, child) {
+          // Aseguramos que la actualización se realice después de la construcción del widget
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            communityViewModel.updateFriendCode(userCode!);
+          });
+
+          return Scaffold(
+            body: SingleChildScrollView(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  TextFormField(
                     controller: communityViewModel.friendCodeController,
                     decoration: InputDecoration(
                       labelText: 'Introduce el código de tu amigo',
@@ -30,52 +37,48 @@ class CommunityScreen extends StatelessWidget {
                         onPressed: communityViewModel.friendCodeController.clear,
                       ),
                     ),
-                  );
-                },
-              ),
-              const SizedBox(height: 24.0),
-              Card(
-                color: Colors.purple.shade100,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-                elevation: 4.0,
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    children: [
-                      const Text(
-                        'Tu código de amigo:',
-                        style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
-                      ),
-                      const SizedBox(height: 10.0),
-                      Consumer<CommunityViewModel>(
-                        builder: (context, communityViewModel, child) {
-                          return SelectableText(
+                  ),
+                  const SizedBox(height: 24.0),
+                  Card(
+                    color: Colors.purple.shade100,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    elevation: 4.0,
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        children: [
+                          const Text(
+                            'Tu código de amigo:',
+                            style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+                          ),
+                          const SizedBox(height: 10.0),
+                          SelectableText(
                             communityViewModel.myFriendCode,
                             style: const TextStyle(
                               fontSize: 20.0,
                               fontWeight: FontWeight.bold,
                               color: Colors.purple,
                             ),
-                          );
-                        },
+                          ),
+                          const SizedBox(height: 10.0),
+                          ElevatedButton.icon(
+                            onPressed: () {
+                              communityViewModel.shareFriendCode();
+                            },
+                            icon: const Icon(Icons.share),
+                            label: const Text('Compartir código'),
+                          ),
+                        ],
                       ),
-                      const SizedBox(height: 10.0),
-                      ElevatedButton.icon(
-                        onPressed: () {
-                          context.read<CommunityViewModel>().shareFriendCode();
-                        },
-                        icon: const Icon(Icons.share),
-                        label: const Text('Compartir código'),
-                      ),
-                    ],
+                    ),
                   ),
-                ),
+                ],
               ),
-            ],
-          ),
-        ),
+            ),
+          );
+        },
       ),
     );
   }

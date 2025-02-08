@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:sqflite/sqflite.dart';
 import 'package:crypto/crypto.dart';
@@ -9,7 +10,6 @@ class UserCRUD {
   Future<int> insertUser(User user) async {
     final db = await DatabaseHelper().database;
 
-    // Verificar si el correo ya está registrado
     final result = await db.query(
       'users',
       where: 'email = ?',
@@ -42,8 +42,27 @@ class UserCRUD {
             name: result.first['name'] as String,
             email: result.first['email'] as String,
             password: result.first['password'] as String,
-            birthday: DateTime.parse(result.first['birthday'] as String), // Parsear de vuelta a DateTime
+            birthday: DateTime.parse(result.first['birthday'] as String),
+            code: result.first['code'] as String,
           )
         : null;
+  }
+
+  String generateUniqueCode() {
+    const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const digits = '0123456789';
+    Random rand = Random();
+
+    String randomLetters() {
+      return String.fromCharCodes(
+          Iterable.generate(3, (_) => letters.codeUnitAt(rand.nextInt(letters.length))));
+    }
+
+    String randomDigits() {
+      return String.fromCharCodes(
+          Iterable.generate(3, (_) => digits.codeUnitAt(rand.nextInt(digits.length))));
+    }
+
+    return '${randomLetters()}${randomDigits()}${randomLetters()}';
   }
 }
