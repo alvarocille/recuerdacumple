@@ -1,0 +1,117 @@
+{
+  "email": "Email",
+  "password": "Password",
+  "login": "Login",
+  "noAccountRegisterHere": "Don't have an account? Register here",
+  "name": "Name",
+  "pleaseEnterYourEmail": "Please enter your email",
+  "pleaseEnterAValidEmail": "Please enter a valid email",
+  "pleaseEnterYourPassword": "Please enter your password",
+  "passwordMustBeAtLeast6Characters": "Password must be at least 6 characters",
+  "birthday": "Birthday",
+  "pleaseSelectYourBirthday": "Please select your birthday",
+  "register": "Register",
+  "alreadyHaveAnAccountLoginHere": "Already have an account? Login here",
+  "alreadyRegistered": "The email is already registered",
+  "@email": {
+    "description": "Label for the email input field"
+  },
+  "@password": {
+    "description": "Label for the password input field"
+  },
+  "@login": {
+    "description": "Text for the login button"
+  },
+  "@noAccountRegisterHere": {
+    "description": "Text for the link to the registration screen"
+  },
+  "@name": {
+    "description": "Label for the name input field"
+  },
+  "@pleaseEnterYourEmail": {
+    "description": "Error message for empty email field"
+  },
+  "@pleaseEnterAValidEmail": {
+    "description": "Error message for invalid email format"
+  },
+  "@pleaseEnterYourPassword": {
+    "description": "Error message for empty password field"
+  },
+  "@passwordMustBeAtLeast6Characters": {
+    "description": "Error message for short password"
+  },
+  "@birthday": {
+    "description": "Label for the birthday input field"
+  },
+  "@pleaseSelectYourBirthday": {
+    "description": "Error message for empty birthday field"
+  },
+  "@register": {
+    "description": "Text for the register button"
+  },
+  "@alreadyHaveAnAccountLoginHere": {
+    "description": "Text for the link to the login screen"
+  },
+  "pleaseEnterValidEmail": "Please enter a valid email",
+  "incorrectEmailOrPassword": "Incorrect email or password",
+  "loginErrorTryAgainLater": "Error logging in. Try again later",
+  "userRegisteredSuccessfully": "User registered successfully",
+  "userRegistrationFailed": "User registration failed",
+  "profile": "Profile",
+  "noUserRegistered": "No user registered",
+  "darkMode": "Dark mode",
+  "language": "Language",
+  "textSize": "Text size",
+  "enterFriendCode": "Enter your friend's code",
+  "send": "Send",
+  "yourFriendCode": "Your friend code:",
+  "shareCode": "Share code",
+  "searchBirthdayPerson": "Search birthday person",
+  "day": "Day",
+  "month": "Month",
+  "year": "Year",
+  "editFunctionNotAvailable": "Edit function not available. Create a new birthday and delete the current one.",
+  "addBirthday": "Add Birthday",
+  "birthdayDate": "Birthday Date",
+  "birthdayAdded": "Birthday Added",
+  "save": "Save",
+  "dontForgetMyBirthday": "Don't forget my birthday. My friend code on Recuerdacumple is: ",
+  "codeCannotBeEmpty": "The code cannot be empty",
+  "invalidFormatMustBeXXX111XXX": "Invalid format. Must be XXX111XXX",
+  "errorUserNotAuthenticated": "Error: User not authenticated",
+  "friendAddedSuccessfully": "Friend added successfully",
+  "calendar": "Calendar",
+  "birthdays": "Birthdays",
+  "community": "Community",
+  "muchToCelebrate": "Much to celebrate!",
+  "settings": "Settings",
+  "logOut": "Log out",
+  "list": "List",
+  "january": "January",
+  "february": "February",
+  "march": "March",
+  "april": "April",
+  "may": "May",
+  "june": "June",
+  "july": "July",
+  "august": "August",
+  "september": "September",
+  "october": "October",
+  "november": "November",
+  "december": "December",
+  "selectLabel": "Select ",
+  "@selectLabel": {
+    "description": "Text for selecting an option in the dropdown menu"
+  },
+  "invalidFriendCode": "Invalid friend code",
+  "cantAddYourselfAsFriend": "You can't add yourself as a friend",
+  "alreadyFriends": "Already friends",
+  "monday": "M",
+  "tuesday": "T",
+  "wednesday": "W",
+  "thursday": "T",
+  "friday": "F",
+  "saturday": "S",
+  "sunday": "S",
+  "@@locale": "en"
+}

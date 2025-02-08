@@ -1,11 +1,14 @@
 import 'package:sqflite/sqflite.dart';
-
 import '../database/database_helper.dart';
 import '../models/birthday.dart';
 
+/// Clase para realizar operaciones CRUD en la base de datos para eventos de cumpleaños.
 class BirthdayCRUD {
   final DatabaseHelper _databaseHelper = DatabaseHelper();
 
+  /// Obtiene el cumpleaños de un usuario dado su [userId].
+  ///
+  /// Retorna una instancia de [Birthday] si se encuentra, de lo contrario retorna null.
   Future<Birthday?> getUserBirthday(int userId) async {
     final db = await _databaseHelper.database;
     final List<Map<String, dynamic>> maps = await db.query(
@@ -26,6 +29,9 @@ class BirthdayCRUD {
     return null;
   }
 
+  /// Obtiene los eventos de un usuario dado su [userId].
+  ///
+  /// Retorna una lista de instancias de [Birthday].
   Future<List<Birthday>> getUserEvents(int userId) async {
     final db = await _databaseHelper.database;
     final List<Map<String, dynamic>> maps = await db.query(
@@ -55,6 +61,9 @@ class BirthdayCRUD {
     });
   }
 
+  /// Obtiene todos los eventos de la base de datos.
+  ///
+  /// Retorna una lista de instancias de [Birthday].
   Future<List<Birthday>> getAllEvents() async {
     final db = await _databaseHelper.database;
     final List<Map<String, dynamic>> maps = await db.query('events');
@@ -70,7 +79,7 @@ class BirthdayCRUD {
     });
   }
 
-  // Insertar un cumpleaños o evento
+  /// Inserta un cumpleaños o evento en la base de datos.
   Future<void> insertBirthday(Birthday birthday) async {
     final db = await _databaseHelper.database;
     await db.insert(
@@ -80,6 +89,9 @@ class BirthdayCRUD {
     );
   }
 
+  /// Obtiene los cumpleaños de los amigos de un usuario dado su [userId].
+  ///
+  /// Retorna una lista de instancias de [Birthday].
   Future<List<Birthday>> getFriendsBirthdays(int userId) async {
     final db = await _databaseHelper.database;
 
@@ -101,6 +113,7 @@ class BirthdayCRUD {
     });
   }
 
+  /// Elimina un cumpleaños o evento de la base de datos dado su [id].
   Future<void> deleteBirthday(int? id) async {
     final db = await _databaseHelper.database;
     await db.delete(
@@ -108,5 +121,28 @@ class BirthdayCRUD {
       where: 'id = ?',
       whereArgs: [id],
     );
+  }
+
+  /// Elimina un cumpleaños de amigo de la base de datos dado su [id].
+  Future<void> deleteFriendBirthday(int? id) async {
+    final db = await _databaseHelper.database;
+    await db.delete(
+      'friends',
+      where: 'friend_id = ?',
+      whereArgs: [id],
+    );
+  }
+
+  /// Verifica si un evento es del usuario dado su [id].
+  ///
+  /// Retorna true si el evento es del usuario, de lo contrario retorna false.
+  Future<bool> isUserEvent(int? id) async {
+    final db = await _databaseHelper.database;
+    final List<Map<String, dynamic>> maps = await db.query(
+      'events',
+      where: 'id = ?',
+      whereArgs: [id],
+    );
+    return maps.isNotEmpty;
   }
 }

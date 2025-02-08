@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../provider/user_provider.dart';
 import '../../viewmodel/main/birthday_list_viewmodel.dart';
 import '../../viewmodel/main_screen_viewmodel.dart';
 import '../../widgets/search_dropdown_button.dart';
+import '../utilities/edit_birthday_dialog.dart';
 
+/// Pantalla que muestra una lista filtrada con los cumpleaños a recordar del usuario.
 class ListScreen extends StatefulWidget {
   const ListScreen({super.key});
 
@@ -32,70 +35,85 @@ class _ListScreenState extends State<ListScreen> {
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Row(
-              children: [
-                Expanded(
-                  child: Consumer<BirthdayListViewModel>(
-                    builder: (context, viewModel, child) {
-                      return TextField(
-                        controller: viewModel.searchController,
-                        decoration: InputDecoration(
-                          labelText: 'Buscar cumpleañero',
-                          prefixIcon: const Icon(Icons.search),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                        ),
-                        onChanged: (query) {
-                          viewModel.filterBirthdays(
-                            name: query,
-                            day: viewModel.selectedDay,
-                            month: viewModel.selectedMonth,
-                            year: viewModel.selectedYear,
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                return Wrap(
+                  spacing: 8.0,
+                  runSpacing: 8.0,
+                  children: [
+                    SizedBox(
+                      width: constraints.maxWidth > 600 ? 600 : constraints.maxWidth - 40,
+                      child: Consumer<BirthdayListViewModel>(
+                        builder: (context, viewModel, child) {
+                          return TextField(
+                            controller: viewModel.searchController,
+                            decoration: InputDecoration(
+                              labelText: AppLocalizations.of(context)?.searchBirthdayPerson ?? 'Buscar cumpleañero',
+                              prefixIcon: const Icon(Icons.search),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
+                            ),
+                            onChanged: (query) {
+                              viewModel.filterBirthdays(
+                                name: query,
+                                day: viewModel.selectedDay,
+                                month: viewModel.selectedMonth,
+                                year: viewModel.selectedYear,
+                              );
+                            },
                           );
                         },
-                      );
-                    },
-                  ),
-                ),
-                const SizedBox(width: 8),
-                Consumer<BirthdayListViewModel>(
-                  builder: (context, viewModel, child) {
-                    return SearchDropdownButton(
-                      label: 'Día',
-                      selectedValue: viewModel.selectedDay,
-                      onChanged: (value) => viewModel.updateSelectedDay(value),
-                    );
-                  },
-                ),
-                const SizedBox(width: 8),
-                Consumer<BirthdayListViewModel>(
-                  builder: (context, viewModel, child) {
-                    return SearchDropdownButton(
-                      label: 'Mes',
-                      selectedValue: viewModel.selectedMonth,
-                      onChanged: (value) => viewModel.updateSelectedMonth(value),
-                    );
-                  },
-                ),
-                const SizedBox(width: 8),
-                Consumer<BirthdayListViewModel>(
-                  builder: (context, viewModel, child) {
-                    return SearchDropdownButton(
-                      label: 'Año',
-                      selectedValue: null,
-                      onChanged: (value) => viewModel.updateSelectedYear(value),
-                    );
-                  },
-                ),
-                const SizedBox(width: 8),
-                IconButton(
-                  icon: const Icon(Icons.clear),
-                  onPressed: () {
-                    context.read<BirthdayListViewModel>().clearFilters();
-                  },
-                ),
-              ],
+                      ),
+                    ),
+                    SizedBox(
+                      width: constraints.maxWidth > 600 ? 150 : (constraints.maxWidth - 64) / 4, // Ajusta el tamaño según el espacio disponible
+                      child: Consumer<BirthdayListViewModel>(
+                        builder: (context, viewModel, child) {
+                          return SearchDropdownButton(
+                            label: AppLocalizations.of(context)?.day ?? 'Día',
+                            selectedValue: viewModel.selectedDay,
+                            onChanged: (value) => viewModel.updateSelectedDay(value),
+                          );
+                        },
+                      ),
+                    ),
+                    SizedBox(
+                      width: constraints.maxWidth > 600 ? 150 : (constraints.maxWidth - 64) / 4, // Ajusta el tamaño según el espacio disponible
+                      child: Consumer<BirthdayListViewModel>(
+                        builder: (context, viewModel, child) {
+                          return SearchDropdownButton(
+                            label: AppLocalizations.of(context)?.month ?? 'Mes',
+                            selectedValue: viewModel.selectedMonth,
+                            onChanged: (value) => viewModel.updateSelectedMonth(value),
+                          );
+                        },
+                      ),
+                    ),
+                    SizedBox(
+                      width: constraints.maxWidth > 600 ? 150 : (constraints.maxWidth - 64) / 4, // Ajusta el tamaño según el espacio disponible
+                      child: Consumer<BirthdayListViewModel>(
+                        builder: (context, viewModel, child) {
+                          return SearchDropdownButton(
+                            label: AppLocalizations.of(context)?.year ?? 'Año',
+                            selectedValue: viewModel.selectedYear,
+                            onChanged: (value) => viewModel.updateSelectedYear(value),
+                          );
+                        },
+                      ),
+                    ),
+                    SizedBox(
+                      width: constraints.maxWidth > 600 ? 48 : (constraints.maxWidth - 64) / 4, // Ajusta el tamaño del IconButton
+                      child: IconButton(
+                        icon: const Icon(Icons.clear),
+                        onPressed: () {
+                          context.read<BirthdayListViewModel>().clearFilters();
+                        },
+                      ),
+                    ),
+                  ],
+                );
+              },
             ),
           ),
           Expanded(
@@ -124,11 +142,9 @@ class _ListScreenState extends State<ListScreen> {
                                 IconButton(
                                   icon: const Icon(Icons.edit),
                                   onPressed: () {
-                                    // Todo: añadir edición de cumpleaños
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      content: Text('Función editar no disponible. Cree un nuevo cumpleaños y elimine el actual.'),
-                                    ),
+                                    showDialog(
+                                      context: context,
+                                      builder: (context) => EditBirthdayDialog(birthday: birthday),
                                     );
                                   },
                                 ),
@@ -154,8 +170,11 @@ class _ListScreenState extends State<ListScreen> {
     );
   }
 
+  /// Metodo para cargar los cumpleaños en la lista y filtrarlos si es necesario
   Future<void> _loadData(BuildContext context, int? userId) async {
     final viewModel = context.read<BirthdayListViewModel>();
+    viewModel.clearFilters();
+    viewModel.birthdays.clear();
     await viewModel.loadFriendsBirthdays(userId!);
     await viewModel.loadUserEvents(userId);
 

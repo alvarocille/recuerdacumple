@@ -3,6 +3,8 @@ import 'package:flutter/foundation.dart' show kIsWeb, defaultTargetPlatform, Tar
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:recuerdacumple/provider/user_provider.dart';
+import 'package:recuerdacumple/ui/screens/configuration/profile_screen.dart';
+import 'package:recuerdacumple/ui/screens/configuration/settings_screen.dart';
 import 'package:recuerdacumple/ui/screens/utilities/add_screen.dart';
 import 'package:recuerdacumple/ui/screens/auth/register_screen.dart';
 import 'package:recuerdacumple/ui/viewmodel/configuration/language_viewmodel.dart';
@@ -16,11 +18,11 @@ import 'package:recuerdacumple/ui/viewmodel/auth/register_viewmodel.dart';
 import 'package:recuerdacumple/ui/viewmodel/configuration/theme_viewmodel.dart';
 import 'package:recuerdacumple/ui/viewmodel/utilities/new_birthday_viewmodel.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'ui/screens/auth/login_screen.dart';
 import 'ui/screens/main_screen.dart';
 
 void main() {
-  // Inicialización de sqflite en plataformas no web
   if (!kIsWeb &&
       (defaultTargetPlatform == TargetPlatform.windows ||
           defaultTargetPlatform == TargetPlatform.linux ||
@@ -54,52 +56,53 @@ void main() {
   );
 }
 
+/// Clase principal de la aplicación.
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // Recuperar el idioma seleccionado y el tamaño de la fuente
     final languageKey = context.watch<LanguageViewModel>().selectedLanguage;
     final fontSizeFactor = context.watch<FontSizeViewModel>().fontSizeFactor;
 
     return MaterialApp(
       title: 'Recuerdacumple',
-      locale: Locale(languageKey), // Asignar el idioma
+      locale: Locale(languageKey),
       theme: _buildLightTheme(),
-      darkTheme: _buildDarkTheme(), // Habilitar tema oscuro si es necesario
-      themeMode: context.watch<ThemeViewModel>().themeMode, // Asignar el modo de tema
+      darkTheme: _buildDarkTheme(),
+      themeMode: context.watch<ThemeViewModel>().themeMode,
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
       builder: (context, child) {
         return MediaQuery(
           data: MediaQuery.of(context).copyWith(
-            textScaler: TextScaler.linear(fontSizeFactor), // Ajustar el tamaño de la fuente
+            textScaler: TextScaler.linear(fontSizeFactor),
           ),
           child: child!,
         );
       },
-      initialRoute: '/', // Empieza en la pantalla de login
+      initialRoute: '/',
       routes: {
         '/': (context) => const LoginScreen(),
         '/register': (context) => const RegisterScreen(),
-        '/home': (context) => const MainScreen(),
+        '/home': (context) => MainScreen(),
         '/add': (context) => const AddBirthdayScreen(),
+        '/settings': (context) => const SettingsScreen(),
+        '/profile': (context) => const ProfileScreen()
       },
     );
   }
 
-  // Tema claro de la aplicación
+  /// Construye el tema claro de la aplicación.
   ThemeData _buildLightTheme() {
     return ThemeData(
       primarySwatch: Colors.purple,
       brightness: Brightness.light,
-      // Personaliza más según tus necesidades
     );
   }
 
-  // Tema oscuro de la aplicación
+  /// Construye el tema oscuro de la aplicación.
   ThemeData _buildDarkTheme() {
-    return ThemeData.dark().copyWith(
-      // Personaliza más según tus necesidades
-    );
+    return ThemeData.dark().copyWith();
   }
 }

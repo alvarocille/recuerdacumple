@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart'; // Asegúrate de importar AppLocalizations
 import '../../../provider/user_provider.dart';
 import '../../viewmodel/utilities/new_birthday_viewmodel.dart';
 
+/// Pantalla de agregación de cumpleaños.
 class AddBirthdayScreen extends StatelessWidget {
   const AddBirthdayScreen({super.key});
 
@@ -12,7 +14,7 @@ class AddBirthdayScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Agregar Cumpleaños'),
+        title: Text(AppLocalizations.of(context)?.addBirthday ?? 'Agregar Cumpleaños'),
         centerTitle: true,
       ),
       body: Padding(
@@ -24,9 +26,9 @@ class AddBirthdayScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   TextFormField(
-                    decoration: const InputDecoration(
-                      labelText: 'Nombre',
-                      border: OutlineInputBorder(),
+                    decoration: InputDecoration(
+                      labelText: AppLocalizations.of(context)?.name ?? 'Nombre',
+                      border: const OutlineInputBorder(),
                     ),
                     onChanged: (value) {
                       viewModel.setName(value);
@@ -34,9 +36,9 @@ class AddBirthdayScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 16),
                   TextFormField(
-                    decoration: const InputDecoration(
-                      labelText: 'Fecha de Cumpleaños',
-                      border: OutlineInputBorder(),
+                    decoration: InputDecoration(
+                      labelText: AppLocalizations.of(context)?.birthdayDate ?? 'Fecha de Cumpleaños',
+                      border: const OutlineInputBorder(),
                     ),
                     readOnly: true,
                     onTap: () async {
@@ -61,11 +63,11 @@ class AddBirthdayScreen extends StatelessWidget {
                     onPressed: () async {
                       await viewModel.addBirthday(user?.id, context);
                       ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('Cumpleaños Agregado')),
+                        SnackBar(content: Text(AppLocalizations.of(context)?.birthdayAdded ?? 'Cumpleaños Agregado')),
                       );
                       Navigator.pop(context);
                     },
-                    child: const Text('Guardar'),
+                    child: Text(AppLocalizations.of(context)?.save ?? 'Guardar'),
                   ),
                 ],
               ),
@@ -76,4 +78,3 @@ class AddBirthdayScreen extends StatelessWidget {
     );
   }
 }
-

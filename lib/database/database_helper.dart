@@ -1,21 +1,27 @@
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
+/// Clase para ayudar con la gestión de la base de datos.
 class DatabaseHelper {
   static final DatabaseHelper _instance = DatabaseHelper._internal();
   static Database? _database;
 
   DatabaseHelper._internal();
 
+  /// Retorna la instancia única de [DatabaseHelper].
   factory DatabaseHelper() => _instance;
 
+  /// Obtiene la base de datos, inicializándola si es necesario.
   Future<Database> get database async {
-    _database ??= await _initDatabase(); 
+    _database ??= await _initDatabase();
     return _database!;
   }
 
+  /// Inicializa la base de datos.
+  ///
+  /// Retorna una instancia de [Database].
   Future<Database> _initDatabase() async {
-    final dbPath = await getDatabasesPath(); 
+    final dbPath = await getDatabasesPath();
     final path = join(dbPath, 'recuerdacumple.db');
 
     return await openDatabase(
@@ -25,6 +31,9 @@ class DatabaseHelper {
     );
   }
 
+  /// Crea las tablas necesarias en la base de datos.
+  ///
+  /// Este método se llama cuando la base de datos se crea por primera vez.
   Future<void> _onCreate(Database db, int version) async {
     await db.execute(''' 
       CREATE TABLE IF NOT EXISTS users (
@@ -57,6 +66,4 @@ class DatabaseHelper {
       )
     ''');
   }
-
-
 }

@@ -1,0 +1,153 @@
+{
+  "email": "电子邮件",
+  "password": "密码",
+  "login": "登录",
+  "noAccountRegisterHere": "没有账号？在这里注册",
+  "name": "名字",
+  "pleaseEnterYourEmail": "请输入您的电子邮件",
+  "pleaseEnterAValidEmail": "请输入有效的电子邮件",
+  "pleaseEnterYourPassword": "请输入您的密码",
+  "passwordMustBeAtLeast6Characters": "密码必须至少有6个字符",
+  "birthday": "生日",
+  "pleaseSelectYourBirthday": "请选择您的生日",
+  "register": "注册",
+  "alreadyHaveAnAccountLoginHere": "已经有账号？在这里登录",
+  "alreadyRegistered": "该电子邮件已被注册",
+  "@email": {
+    "description": "电子邮件输入字段的标签"
+  },
+  "@password": {
+    "description": "密码输入字段的标签"
+  },
+  "@login": {
+    "description": "登录按钮的文本"
+  },
+  "@noAccountRegisterHere": {
+    "description": "指向注册页面的链接文本"
+  },
+  "@name": {
+    "description": "名字输入字段的标签"
+  },
+  "@pleaseEnterYourEmail": {
+    "description": "电子邮件为空时的错误信息"
+  },
+  "@pleaseEnterAValidEmail": {
+    "description": "电子邮件格式无效时的错误信息"
+  },
+  "@pleaseEnterYourPassword": {
+    "description": "密码为空时的错误信息"
+  },
+  "@passwordMustBeAtLeast6Characters": {
+    "description": "密码长度不足时的错误信息"
+  },
+  "@birthday": {
+    "description": "生日输入字段的标签"
+  },
+  "@pleaseSelectYourBirthday": {
+    "description": "生日字段为空时的错误信息"
+  },
+  "@register": {
+    "description": "注册按钮的文本"
+  },
+  "@alreadyHaveAnAccountLoginHere": {
+    "description": "指向登录页面的链接文本"
+  },
+  "pleaseEnterValidEmail": "请输入有效的电子邮件",
+  "incorrectEmailOrPassword": "电子邮件或密码错误",
+  "loginErrorTryAgainLater": "登录错误，请稍后再试",
+  "userRegisteredSuccessfully": "用户注册成功",
+  "userRegistrationFailed": "用户注册失败",
+  "profile": "个人资料",
+  "noUserRegistered": "没有用户注册",
+  "darkMode": "暗黑模式",
+  "language": "语言",
+  "textSize": "文字大小",
+  "enterFriendCode": "输入您朋友的代码",
+  "send": "发送",
+  "yourFriendCode": "您的朋友代码：",
+  "shareCode": "分享代码",
+  "searchBirthdayPerson": "搜索生日的人",
+  "day": "日",
+  "month": "月",
+  "year": "年",
+  "editFunctionNotAvailable": "编辑功能不可用。请创建新的生日，并删除当前的。",
+  "addBirthday": "添加生日",
+  "birthdayDate": "生日日期",
+  "birthdayAdded": "生日已添加",
+  "save": "保存",
+  "dontForgetMyBirthday": "不要忘记我的生日。我的朋友代码在 Recuerdacumple 是： ",
+  "codeCannotBeEmpty": "代码不能为空",
+  "invalidFormatMustBeXXX111XXX": "格式无效。必须是 XXX111XXX",
+  "errorUserNotAuthenticated": "错误：用户未认证",
+  "friendAddedSuccessfully": "朋友添加成功",
+  "calendar": "日历",
+  "birthdays": "生日",
+  "community": "社区",
+  "muchToCelebrate": "值得庆祝的事情很多！",
+  "settings": "设置",
+  "logOut": "登出",
+  "list": "列表",
+  "january": "一月",
+  "february": "二月",
+  "march": "三月",
+  "april": "四月",
+  "may": "五月",
+  "june": "六月",
+  "july": "七月",
+  "august": "八月",
+  "september": "九月",
+  "october": "十月",
+  "november": "十一月",
+  "december": "十二月",
+  "selectLabel": "选择 ",
+  "@selectLabel": {
+    "description": "下拉菜单中选择选项的文本"
+  },
+  "invalidFriendCode": "朋友代码无效",
+  "cantAddYourselfAsFriend": "您不能添加自己为朋友",
+  "alreadyFriends": "已经是朋友了",
+  "monday": "一",
+  "tuesday": "二",
+  "wednesday": "三",
+  "thursday": "四",
+  "friday": "五",
+  "saturday": "六",
+  "sunday": "日",
+  "@editBirthday": {
+    "description": "编辑生日对话框的标题",
+    "type": "text",
+    "placeholders": {},
+    "value": "编辑生日"
+  },
+  "@enterName": {
+    "description": "在生日编辑表单中名称字段为空时的验证消息",
+    "type": "text",
+    "placeholders": {},
+    "value": "请输入名字"
+  },
+  "@date": {
+    "description": "生日编辑表单中日期字段的标签",
+    "type": "text",
+    "placeholders": {},
+    "value": "日期 (DD/MM/YYYY)"
+  },
+  "@enterDate": {
+    "description": "在生日编辑表单中日期字段为空时的验证消息",
+    "type": "text",
+    "placeholders": {},
+    "value": "请输入日期"
+  },
+  "@cancel": {
+    "description": "编辑生日对话框中取消按钮的文本",
+    "type": "text",
+    "placeholders": {},
+    "value": "取消"
+  },
+  "@save": {
+    "description": "编辑生日对话框中保存按钮的文本",
+    "type": "text",
+    "placeholders": {},
+    "value": "保存"
+  },
+"@@locale": "zh"
+}

@@ -1,0 +1,122 @@
+{
+  "email": "Correo electrónico",
+  "password": "Contraseña",
+  "login": "Iniciar sesión",
+  "noAccountRegisterHere": "¿No tienes una cuenta? Regístrate aquí",
+  "name": "Nombre",
+  "pleaseEnterYourEmail": "Por favor, ingresa tu correo",
+  "pleaseEnterAValidEmail": "Por favor, ingresa un correo válido",
+  "pleaseEnterYourPassword": "Por favor, ingresa tu contraseña",
+  "passwordMustBeAtLeast6Characters": "La contraseña debe tener al menos 6 caracteres",
+  "birthday": "Fecha de nacimiento",
+  "pleaseSelectYourBirthday": "Por favor, selecciona tu fecha de cumpleaños",
+  "register": "Registrarse",
+  "alreadyHaveAnAccountLoginHere": "¿Ya tienes una cuenta? Inicia sesión aquí",
+  "alreadyRegistered": "El correo ya está registrado",
+  "@email": {
+    "description": "Etiqueta para el campo de entrada de correo electrónico"
+  },
+  "@password": {
+    "description": "Etiqueta para el campo de entrada de contraseña"
+  },
+  "@login": {
+    "description": "Texto del botón de inicio de sesión"
+  },
+  "@noAccountRegisterHere": {
+    "description": "Texto para el enlace a la pantalla de registro"
+  },
+  "@name": {
+    "description": "Etiqueta para el campo de entrada de nombre"
+  },
+  "@pleaseEnterYourEmail": {
+    "description": "Mensaje de error para campo de correo vacío"
+  },
+  "@pleaseEnterAValidEmail": {
+    "description": "Mensaje de error para formato de correo inválido"
+  },
+  "@pleaseEnterYourPassword": {
+    "description": "Mensaje de error para campo de contraseña vacío"
+  },
+  "@passwordMustBeAtLeast6Characters": {
+    "description": "Mensaje de error para contraseña corta"
+  },
+  "@birthday": {
+    "description": "Etiqueta para el campo de entrada de cumpleaños"
+  },
+  "@pleaseSelectYourBirthday": {
+    "description": "Mensaje de error para campo de cumpleaños vacío"
+  },
+  "@register": {
+    "description": "Texto del botón de registro"
+  },
+  "@alreadyHaveAnAccountLoginHere": {
+    "description": "Texto para el enlace a la pantalla de inicio de sesión"
+  },
+  "pleaseEnterValidEmail": "Por favor, ingresa un correo válido",
+  "incorrectEmailOrPassword": "Correo o contraseña incorrectos",
+  "loginErrorTryAgainLater": "Error al iniciar sesión. Intenta de nuevo más tarde",
+  "userRegisteredSuccessfully": "Usuario registrado correctamente",
+  "userRegistrationFailed": "No se ha podido registrar correctamente.",
+  "profile": "Perfil",
+  "noUserRegistered": "No hay usuario registrado",
+  "darkMode": "Modo oscuro",
+  "language": "Idioma",
+  "textSize": "Tamaño del texto",
+  "enterFriendCode": "Introduce el código de tu amigo",
+  "send": "Enviar",
+  "yourFriendCode": "Tu código de amigo:",
+  "shareCode": "Compartir código",
+  "searchBirthdayPerson": "Buscar cumpleañero",
+  "day": "Día",
+  "month": "Mes",
+  "year": "Año",
+  "editFunctionNotAvailable": "Función editar no disponible. Cree un nuevo cumpleaños y elimine el actual.",
+  "addBirthday": "Agregar Cumpleaños",
+  "birthdayDate": "Fecha de Cumpleaños",
+  "birthdayAdded": "Cumpleaños Agregado",
+  "save": "Guardar",
+  "dontForgetMyBirthday": "No olvides mi cumpleaños. Mi código de amigo en Recuerdacumple es: ",
+  "codeCannotBeEmpty": "El código no puede estar vacío",
+  "invalidFormatMustBeXXX111XXX": "Formato inválido. Debe ser XXX111XXX",
+  "errorUserNotAuthenticated": "Error: Usuario no autenticado",
+  "friendAddedSuccessfully": "Amigo agregado con éxito",
+  "calendar": "Calendario",
+  "birthdays": "Cumpleaños",
+  "community": "Comunidad",
+  "muchToCelebrate": "¡Mucho que celebrar!",
+  "settings": "Configuración",
+  "logOut": "Cerrar sesión",
+  "list": "Lista",
+  "january": "Enero",
+  "february": "Febrero",
+  "march": "Marzo",
+  "april": "Abril",
+  "may": "Mayo",
+  "june": "Junio",
+  "july": "Julio",
+  "august": "Agosto",
+  "september": "Septiembre",
+  "october": "Octubre",
+  "november": "Noviembre",
+  "december": "Diciembre",
+  "selectLabel": "Seleccione ",
+  "@selectLabel": {
+    "description": "Texto para seleccionar una opción en el menú desplegable"
+  },
+  "invalidFriendCode": "Código de amigo no válido",
+  "cantAddYourselfAsFriend":  "No puedes agregarte a ti mismo como amigo",
+  "alreadyFriends": "Ya son amigos",
+  "monday": "L",
+  "tuesday": "M",
+  "wednesday": "X",
+  "thursday": "J",
+  "friday": "V",
+  "saturday": "S",
+  "sunday": "D",
+  "editBirthday": "Editar Cumpleaños",
+  "enterName": "Por favor, ingrese un nombre",
+  "date": "Fecha (DD/MM/AAAA)",
+  "enterDate": "Por favor, ingrese una fecha",
+  "cancel": "Cancelar",
+  "@@locale": "es"
+}

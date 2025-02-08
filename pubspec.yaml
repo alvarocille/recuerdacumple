@@ -13,21 +13,26 @@ dependencies:
   path: ^1.8.3
   calendar_view: ^1.4.0
   crypto: ^3.0.6
-  intl:
+  flutter_localizations:
+    sdk: flutter
+  intl: any
   provider: ^6.1.2
   shared_preferences: ^2.4.0
-  flutter_localization:
   flutter_lints:
   cupertino_icons: ^1.0.8
   share_plus: ^10.1.4
+  intl_translation: ^0.20.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
-  flutter_lints: ^5.0.0
+  mockito: ^5.4.5
+  build_runner: ^2.4.14
+  integration_test:
+    sdk: flutter
 
 flutter:
+  generate: true
   assets:
     - assets/background.jpg
   uses-material-design: true

@@ -1,0 +1,153 @@
+{
+  "email": "Email",
+  "password": "Parolă",
+  "login": "Autentificare",
+  "noAccountRegisterHere": "Nu ai un cont? Înregistrează-te aici",
+  "name": "Nume",
+  "pleaseEnterYourEmail": "Te rog să introduci email-ul tău",
+  "pleaseEnterAValidEmail": "Te rog să introduci un email valid",
+  "pleaseEnterYourPassword": "Te rog să introduci parola ta",
+  "passwordMustBeAtLeast6Characters": "Parola trebuie să aibă cel puțin 6 caractere",
+  "birthday": "Data nașterii",
+  "pleaseSelectYourBirthday": "Te rog să selectezi data nașterii tale",
+  "register": "Înregistrare",
+  "alreadyHaveAnAccountLoginHere": "Ai deja un cont? Autentifică-te aici",
+  "alreadyRegistered": "Email-ul este deja înregistrat",
+  "@email": {
+    "description": "Etichetă pentru câmpul de introducere a email-ului"
+  },
+  "@password": {
+    "description": "Etichetă pentru câmpul de introducere a parolei"
+  },
+  "@login": {
+    "description": "Text pentru butonul de autentificare"
+  },
+  "@noAccountRegisterHere": {
+    "description": "Text pentru linkul către ecranul de înregistrare"
+  },
+  "@name": {
+    "description": "Etichetă pentru câmpul de introducere a numelui"
+  },
+  "@pleaseEnterYourEmail": {
+    "description": "Mesaj de eroare pentru câmpul de email gol"
+  },
+  "@pleaseEnterAValidEmail": {
+    "description": "Mesaj de eroare pentru formatul de email invalid"
+  },
+  "@pleaseEnterYourPassword": {
+    "description": "Mesaj de eroare pentru câmpul de parolă gol"
+  },
+  "@passwordMustBeAtLeast6Characters": {
+    "description": "Mesaj de eroare pentru parola scurtă"
+  },
+  "@birthday": {
+    "description": "Etichetă pentru câmpul de introducere a datei nașterii"
+  },
+  "@pleaseSelectYourBirthday": {
+    "description": "Mesaj de eroare pentru câmpul de dată de naștere gol"
+  },
+  "@register": {
+    "description": "Text pentru butonul de înregistrare"
+  },
+  "@alreadyHaveAnAccountLoginHere": {
+    "description": "Text pentru linkul către ecranul de autentificare"
+  },
+  "pleaseEnterValidEmail": "Te rog să introduci un email valid",
+  "incorrectEmailOrPassword": "Email sau parolă incorectă",
+  "loginErrorTryAgainLater": "Eroare la autentificare. Încearcă din nou mai târziu",
+  "userRegisteredSuccessfully": "Utilizator înregistrat cu succes",
+  "userRegistrationFailed": "Înregistrarea utilizatorului a eșuat",
+  "profile": "Profil",
+  "noUserRegistered": "Niciun utilizator înregistrat",
+  "darkMode": "Mod întunecat",
+  "language": "Limbă",
+  "textSize": "Mărimea textului",
+  "enterFriendCode": "Introdu codul prietenului tău",
+  "send": "Trimite",
+  "yourFriendCode": "Codul tău de prieten:",
+  "shareCode": "Distribuie codul",
+  "searchBirthdayPerson": "Caută persoana sărbătorită",
+  "day": "Zi",
+  "month": "Lună",
+  "year": "An",
+  "editFunctionNotAvailable": "Funcția de editare nu este disponibilă. Creează un nou eveniment de naștere și șterge-l pe cel actual.",
+  "addBirthday": "Adaugă Data Nașterii",
+  "birthdayDate": "Data Nașterii",
+  "birthdayAdded": "Data Nașterii Adăugată",
+  "save": "Salvează",
+  "dontForgetMyBirthday": "Nu uita de ziua mea. Codul meu de prieten pe Recuerdacumple este: ",
+  "codeCannotBeEmpty": "Codul nu poate fi gol",
+  "invalidFormatMustBeXXX111XXX": "Format invalid. Trebuie să fie XXX111XXX",
+  "errorUserNotAuthenticated": "Eroare: Utilizator neautentificat",
+  "friendAddedSuccessfully": "Prieten adăugat cu succes",
+  "calendar": "Calendar",
+  "birthdays": "Aniversări",
+  "community": "Comunitate",
+  "muchToCelebrate": "Multe de sărbătorit!",
+  "settings": "Setări",
+  "logOut": "Deconectare",
+  "list": "Listă",
+  "january": "Ianuarie",
+  "february": "Februarie",
+  "march": "Martie",
+  "april": "Aprilie",
+  "may": "Mai",
+  "june": "Iunie",
+  "july": "Iulie",
+  "august": "August",
+  "september": "Septembrie",
+  "october": "Octombrie",
+  "november": "Noiembrie",
+  "december": "Decembrie",
+  "selectLabel": "Selectează ",
+  "@selectLabel": {
+    "description": "Text pentru selectarea unei opțiuni în meniul dropdown"
+  },
+  "invalidFriendCode": "Cod de prieten invalid",
+  "cantAddYourselfAsFriend": "Nu te poți adăuga pe tine ca prieten",
+  "alreadyFriends": "Sunteți deja prieteni",
+  "monday": "L",
+  "tuesday": "M",
+  "wednesday": "M",
+  "thursday": "J",
+  "friday": "V",
+  "saturday": "S",
+  "sunday": "D",
+  "@editBirthday": {
+    "description": "Titlul dialogului de editare a aniversării",
+    "type": "text",
+    "placeholders": {},
+    "value": "Editează Aniversare"
+  },
+  "@enterName": {
+    "description": "Mesaj de validare când câmpul de nume este gol în formularul de editare a aniversării",
+    "type": "text",
+    "placeholders": {},
+    "value": "Te rog introduce un nume"
+  },
+  "@date": {
+    "description": "Eticheta câmpului de dată în formularul de editare a aniversării",
+    "type": "text",
+    "placeholders": {},
+    "value": "Data (ZZ/LL/AAAA)"
+  },
+  "@enterDate": {
+    "description": "Mesaj de validare când câmpul de dată este gol în formularul de editare a aniversării",
+    "type": "text",
+    "placeholders": {},
+    "value": "Te rog introduce o dată"
+  },
+  "@cancel": {
+    "description": "Textul butonului de anulare în dialogul de editare a aniversării",
+    "type": "text",
+    "placeholders": {},
+    "value": "Anulează"
+  },
+  "@save": {
+    "description": "Textul butonului de salvare în dialogul de editare a aniversării",
+    "type": "text",
+    "placeholders": {},
+    "value": "Salvează"
+  },
+"@@locale": "ro"
+}
